@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 
 const app = express();
@@ -7,6 +8,7 @@ const port = process.env.PORT || 3000;
 const prisma = new PrismaClient();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/alunos', async (req, res) => {
     const { name, cpf, email } = req.query;
