@@ -1,20 +1,20 @@
-# Utilize uma imagem base Node.js LTS com Alpine Linux (leve)
-FROM node:lts-alpine
+# Usar uma imagem base oficial do Node.js
+FROM node:20.11.0-alpine
 
-# Crie o diretório da aplicação
-WORKDIR /app
+# Definir o diretório de trabalho dentro do contêiner
+WORKDIR /src
 
-# Copie o package.json e package-lock.json para instalar as dependências
+# Copiar package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
 
-# Instale as dependências
+# Instalar as dependências
 RUN npm install
 
-# Copie o restante do código da aplicação
+# Copiar o restante do código da aplicação para o diretório de trabalho
 COPY . .
 
-# Defina a porta que a aplicação irá escutar
+# Expor a porta em que a aplicação vai rodar
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
