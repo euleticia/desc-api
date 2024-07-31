@@ -68,3 +68,5 @@ app.delete('/api/alunos/:id', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+module.exports = app;
